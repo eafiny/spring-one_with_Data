@@ -48,6 +48,33 @@
         </ul>
     </nav>
 
+    <h4>Фильтровать по цене:</h4>
+
+    <form method="POST" th:action="@{/products/filter/price}">
+        <div class="mb-3">
+            <label for="minPriceField" class="form-label">Минимальная цена</label>
+            <input type="number" class="form-control" id="minPriceField" name="minPrice">
+
+            <label for="maxPriceField" class="form-label">Максимальная цена</label>
+            <input type="number" class="form-control" id="maxPriceField" name="maxPrice">
+        </div>
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
+    </form>
+
+    <br>
+
+    <h4>Фильтровать по названию:</h4>
+
+    <form method="POST" th:action="@{/products/filter/title}">
+        <div class="mb-3">
+            <label for="titleField" class="form-label">Название или часть названия</label>
+            <input type="text" class="form-control" id="titleField" name="title">
+        </div>
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
+    </form>
+
+    <br>
+
     <a th:href="@{/products/add}" class="btn btn-primary">Добавить новый товар</a>
 </div>
 </body>
