@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Spring One</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Информация о товаре</h1>
+        <div th:if="${product != null}">
+            <h5 th:text="${'ID: ' + product.id}"/>
+            <h5 th:text="${'Категория: ' + product.category.title}"/>
+            <h5 th:text="${'Название: ' + product.title}"/>
+            <h5 th:text="${'Цена: ' + product.price}"/>
+        </div>
+        <div th:if="${product == null}">
+            <h5>Такого товара не существует. Проверьте ID</h5>
+        </div>
+        <a th:href="@{/}">На главную страницу</a>
+    </div>
+</body>
+</html>
