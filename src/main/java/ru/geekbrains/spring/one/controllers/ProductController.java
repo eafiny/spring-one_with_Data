@@ -56,4 +56,23 @@ public class ProductController {
         productService.deleteById(id);
         return "redirect:/";
     }
+
+    @PostMapping("/products/filter/price")
+    public String filterProductsByPrice(Model model, @RequestParam(name = "minPrice", required = false) Integer minPrice, @RequestParam(name = "maxPrice", required = false) Integer maxPrice) {
+
+        Page<Product> page = productService.getFilteredProductsByPrice(minPrice, maxPrice, 4);
+        model.addAttribute("page", page);
+        return "index";
+    }
+
+    @PostMapping("/products/filter/title")
+    public String filterProductsByTitle(Model model, @RequestParam(name = "title", required = false) String titlePart) {
+        if (titlePart == null) {
+            return "redirect:/";
+        }else {
+            Page<Product> page = productService.getFilteredProductsByTitlePart(titlePart, 5);
+            model.addAttribute("page", page);
+            return "index";
+        }
+    }
 }
